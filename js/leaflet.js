@@ -46,7 +46,9 @@ var layerControl = L.control.layers(baseMaps).addTo(map);
 // KONFIGURACJA APLIKACJI
 // ============================================
 
-const API_URL = 'http://localhost:8000';
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000' 
+    : 'https://twoja-nazwa.onrender.com'; // zmienic
 
 // Mapowanie kategorii na kolory
 const categoryColors = {

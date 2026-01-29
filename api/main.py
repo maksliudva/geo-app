@@ -1,4 +1,4 @@
-# /home/makse/projects/geo-app/api/main.py
+
 """
 FastAPI server dla geoportalu wydarzeń Warszawy
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 from contextlib import asynccontextmanager
 from logic.parser_update import Waw4FreeParser, EventBox
 from api.geocoding_service import GeocodingService
-# Inicjalizacja serwisów PRZED definicją app
+
 parser = Waw4FreeParser()
 geocoding_service = GeocodingService()
 
@@ -23,26 +23,23 @@ geocoding_service = GeocodingService()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup i shutdown events"""
-    # Startup
+    
     logger.info("Inicjalizacja cache'u...")
     geocoding_service.cache._init_db()
-    
     yield
-    
-    # Shutdown
     logger.info("Zamykanie aplikacji...")
 
 
-# Dodaj parent directory do ścieżki
+
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
 
-# Konfiguracja loggera
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Inicjalizacja
+
 app = FastAPI(
     title="Geoportal Warszawy",
     description="API do pobierania geokodowanych wydarzeń z Warszawy",
@@ -64,10 +61,11 @@ def is_within_warsaw(lat: float, lon: float) -> bool:
             WARSAW_BBOX['min_lon'] <= lon <= WARSAW_BBOX['max_lon'])
 
 
-# CORS
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:5500",
+                   "https://maksliudva.github.io/geo-app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -75,7 +73,7 @@ app.add_middleware(
 
 
 
-# Pydantic modele
+
 from pydantic import BaseModel
 
 class EventResponse(BaseModel):
