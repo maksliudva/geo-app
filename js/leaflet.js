@@ -48,7 +48,7 @@ var layerControl = L.control.layers(baseMaps).addTo(map);
 
 const API_URL = window.location.hostname === 'localhost' 
     ? 'http://localhost:8000' 
-    : 'https://geo-app-6cmk.onrender.com/'; // zmienic
+    : 'https://geo-app-6cmk.onrender.com'; // zmienic
 
 // Mapowanie kategorii na kolory
 const categoryColors = {
