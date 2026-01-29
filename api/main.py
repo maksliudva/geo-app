@@ -41,8 +41,8 @@ logger = logging.getLogger(__name__)
 
 
 app = FastAPI(
-    title="Geoportal Warszawy",
-    description="API do pobierania geokodowanych wydarzeń z Warszawy",
+    title="waw4free event parser",
+    description="API do pobierania geokodowanych wydarzeń z Warszawy, www.wa4free.pl",
     version="1.0.0",
     lifespan=lifespan  # Dodaj to
 )
