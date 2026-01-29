@@ -2,7 +2,36 @@
 // INICJALIZACJA MAPY I WARSTW
 // ============================================
 
-var map = L.map('map_container').setView([52.2298, 21.0118], 13);
+var map = L.map('map_container',
+    {loadingControl: true}
+).setView([52.2298, 21.0118], 13);
+
+// Lokalizacja użytkownika
+L.control.locate({
+    position: 'topleft',
+    strings: {
+        title: "Pokaż moją lokalizację"
+    },
+    locateOptions: {
+        maxZoom: 16,
+        enableHighAccuracy: true
+    },
+    flyTo: true,
+    keepCurrentZoomLevel: false,
+    circleStyle: {
+        color: '#4266f4ff',
+        fillColor: '#4285F4',
+        fillOpacity: 0.15,
+        weight: 2
+    },
+    markerStyle: {
+        color: '#4285F4',
+        fillColor: '#4285F4',
+        fillOpacity: 0.8,
+        weight: 2
+    }
+}).addTo(map);
+
 
 // Warstwy bazowe
 const basic_layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -48,7 +77,7 @@ var layerControl = L.control.layers(baseMaps).addTo(map);
 
 const API_URL = window.location.hostname === 'localhost' 
     ? 'http://localhost:8000' 
-    : 'https://geo-app-6cmk.onrender.com'; // zmienic
+    : 'https://geo-app-6cmk.onrender.com'; 
 
 // Mapowanie kategorii na kolory
 const categoryColors = {

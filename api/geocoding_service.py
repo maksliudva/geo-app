@@ -31,13 +31,13 @@ class GeocodingService:
         if not address or address == "Brak adresu":
             return None
         
-        # Sprawdź cache
+        
         cached = self.cache.get(address)
         if cached:
             logger.info(f"Cache hit: {address}")
             return cached
         
-        # Brak w cache - geokoduj
+        
         try:
             full_address = f"{address}, Warszawa, Polska"
             location = self.geocoder.geocode(full_address)
