@@ -65,7 +65,7 @@ def is_within_warsaw(lat: float, lon: float) -> bool:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5500",
-                   "https://maksliudva.github.io/geo-app"],
+                "https://geo-app-6cmk.onrender.com"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
