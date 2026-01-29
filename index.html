@@ -5,16 +5,44 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
+        
+        <!-- MarkerCluster CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
 
-      <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <!-- Flatpickr CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-    </head>
-    <body>
-        <div id="map_container"></div>
+     
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+</head>
+<body>
+    <div id="calendar-icon" title="Wybierz datę">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+    </div>
+    
+    <input type="text" id="date-picker">
+    <div id="status-box"></div>
+    
+    <!-- Legenda -->
+    <div class="legend">  
+        <h4>Kategorie wydarzeń</h4>
+        <input type="checkbox" id="category-toggle" name="legend-main-btn">
+        <label for="category-toggle">Odznacz wszystkie</label><br>
+        <div id="legend-content"></div>
+    </div>
+    
+    <div id="map_container"></div>
 
-
-        <script src="js/leaflet.js"></script>
-    </body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/leaflet.js"></script>
+</body>    
+</html>    

@@ -1,2 +1,4 @@
 TODO.md
-
+.venv/
+api/__pycache__
+*pyc 
